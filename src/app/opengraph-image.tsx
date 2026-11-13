@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Elham | إلهام, Portfolio";
+export const alt = "Elham, Portfolio";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -19,15 +19,9 @@ async function loadFont(family: string, weight: number, text: string): Promise<A
 }
 
 export default async function OpengraphImage() {
-  const [bodoni, amiri] = await Promise.all([
-    loadFont("Bodoni Moda", 400, "ElhamPortfolio"),
-    loadFont("Amiri", 400, "إلهام"),
-  ]);
-
-  const fonts = [
-    ...(bodoni ? [{ name: "Bodoni Moda", data: bodoni, weight: 400 as const, style: "normal" as const }] : []),
-    ...(amiri ? [{ name: "Amiri", data: amiri, weight: 400 as const, style: "normal" as const }] : []),
-  ];
+  // Latin only: the OG renderer (Satori) cannot shape Arabic font features.
+  const bodoni = await loadFont("Bodoni Moda", 400, "ElhamPortfolio");
+  const fonts = bodoni ? [{ name: "Bodoni Moda", data: bodoni, weight: 400 as const, style: "normal" as const }] : [];
 
   return new ImageResponse(
     (
@@ -46,7 +40,7 @@ export default async function OpengraphImage() {
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ fontSize: 22, letterSpacing: 6, color: "#8C4E57", textTransform: "uppercase" }}>Portfolio</div>
           <div style={{ fontSize: 184, lineHeight: 1, fontFamily: "Bodoni Moda", marginTop: 12 }}>Elham</div>
-          {amiri ? <div style={{ fontSize: 76, fontFamily: "Amiri", color: "#8C4E57", marginTop: 8 }}>إلهام</div> : null}
+          <div style={{ fontSize: 26, letterSpacing: 2, color: "#76655C", marginTop: 20 }}>From a thought to an impression</div>
         </div>
         <div
           style={{
