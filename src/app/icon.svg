@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="14" fill="#5A1F33"/>
+  <path d="M14 58V30a18 18 0 0 1 36 0v28" fill="none" stroke="#E8D8C3" stroke-width="2"/>
+  <text x="32" y="50" text-anchor="middle" font-family="Didot, 'Bodoni 72', Georgia, 'Times New Roman', serif" font-size="30" fill="#FBF7F2">E</text>
+  <circle cx="32" cy="12" r="4" fill="#D9A9AE"/>
+</svg>
